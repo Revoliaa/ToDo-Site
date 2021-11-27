@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block container %}
+<link rel="stylesheet" href="static/home/home.css">
+<h1>Notes</h1>
+<ul class="note-list">
+    {% for note in user.notes  %}
+    <li class="note-items">
+        {{ note.text }}
+        <button class="btn-remove" onclick="deleteNote({{ note.id }})">
+            <p>X</p>
+        </button>
+    </li>
+    {% endfor%}
+</ul>
+<form method="POST">
+    <textarea name="note" class="note-textarea"></textarea>
+    <br>
+    <div class="btn-add">
+        <button type="submit">Add Note</button>
+    </div>
+</form>
+
+<script src="static/home/home.js"></script>
+{% endblock %}

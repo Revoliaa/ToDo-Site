@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/base/base.css">
+    <link rel="shortcut icon" href="static/logo.png" type="image/png">
+    <title>{% block title %}Revolia's ToDo Site{% endblock %}</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-toggle-button">
+            <button onclick="toggle()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>                
+            </button>
+        </div>
+
+        <div class="navbar-links">
+            {% if user.is_authenticated %}
+            <a href="/">Home</a>
+            <a href="/logout">Logout</a>
+            {% else %}
+            <a href="/login">Login</a>
+            <a href="/sign-up">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="errorMessages">
+        {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            {% if category == "error" %}
+            <div class="alert" role="alert" id="errorDiv">
+                {{ message}}
+                <button type="button" data-dismiss="alert" onclick="closeError()">
+                    <p>X</p>
+                </button>
+            </div>
+            {% else %}
+            <div class="success" role="success" id="successDiv">
+                {{ message}}
+                <button type="button" data-dismiss="success" onclick="closeSuccess()">
+                    <p>X</p>
+                </button>
+            </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% endwith %}        
+    </div>
+
+    <div class="container">
+        {% block container %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>This website shared at <a href="https://github.com/Revoliaa">GitHub</a><br>Made by Revolia 2021</p>
+    </footer>
+
+    <script src="static/base/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block container %}
+<link rel="stylesheet" href="static/sign_up/sign_up.css">
+<form method="post">
+    <h3>Sign Up</h3>
+    <div class="form-userName">
+        <label for="userName">Username</label>
+        <input type="text" class="form-userName" id="userName" name="userName" placeholder="Enter user name">
+    </div>
+    <div class="form-password">
+        <label for="password">Password</label>
+        <input type="password" class="form-password" id="password" name="password" placeholder="Enter password">
+    </div>
+    <div class="form-passwordConfirm">
+        <label for="passwordConfirm">Password (Confirm)</label>
+        <input type="password" class="form-passwordConfirm" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm password">
+    </div>
+    <button class="btn-submit">Sign Up</button>
+</form>
+{% endblock %}
